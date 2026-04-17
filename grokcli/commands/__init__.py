@@ -23,7 +23,8 @@ from . import (
   metrics,
   instances,
   autostacks,
-  POST
+  POST,
+  rag
 )
 __import__("import", globals(), locals(), ["."]) # "import" is reserverd.
 
@@ -38,5 +39,6 @@ __all__ = [
   "metrics",
   "instances",
   "autostacks",
-  "POST"
+  "POST",
+  "rag"
 ]

@@ -313,6 +313,30 @@ Each command takes `GROK_SERVER_URL` and `GROK_API_KEY` as the first two argumen
 
       grok autostacks instances list [GROK_SERVER_URL GROK_API_KEY] --id=STACK_ID
 
+- `grok rag`
+
+    Retrieve relevant chunks from local files and query Grok with grounded context.
+
+            grok rag --query "How does checkpoint loading work?" --corpus ./grok-1 --show-context
+
+    Key options:
+
+    - `--query "..."` Required question text.
+    - `--corpus PATH` File or directory to index. Can be repeated.
+    - `--ext .md,.py,...` Comma-separated file extensions to include.
+    - `--top-k N` Number of retrieved chunks to include.
+    - `--api-key KEY` Optional. If omitted, uses `XAI_API_KEY` env var.
+    - `--model MODEL_NAME` Optional model name (default: `grok-2-latest`).
+
+    Example:
+
+            export XAI_API_KEY=YOUR_KEY
+            grok rag \
+                --query "Summarize the inference flow" \
+                --corpus ./grok-1 \
+                --ext .md,.py \
+                --top-k 6
+
 Note to developers
 ------------------
 
